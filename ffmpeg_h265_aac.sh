@@ -5,12 +5,18 @@ output=${input//mkv/mp4}
 SECONDS=0
 
 args=(
-    -hide_banner -loglevel 0 -stats             #minimal output
+    -hide_banner                
+    -loglevel 0
+    -stats
     -i "$input"
-    -c:v libx265 -level 4.1 -preset veryslow    #video settings
-    -crf 24 -vsync vfr -tune grain
-    -c:a aac -b:a 192k                          #audio settings
-    # -c:s vobsub                                 #subtitle
+    -c:v libx265        #video
+    -preset veryslow
+    -crf 24
+    -vsync vfr
+    -tune grain
+    -c:a aac            #audio
+    -b:a 192k
+    -c:s vobsub         #subtitle
     "$output"
 )
 
